@@ -5,12 +5,21 @@
 using std::string;
 
 namespace Searches{
-  class BinaryFirstSearch{
+  class BreadthFirstSearch{
     private:
-    Queues::FIFO que;
+    Queues::FIFO queue;
 
     public:
-    BinaryFirstSearch();
+    BreadthFirstSearch();
+    string Path(Node* start, string destination);
+  };
+
+  class DepthFirstSearch{
+    private:
+    Queues::LIFO queue;
+
+    public:
+    DepthFirstSearch();
     string Path(Node* start, string destination);
   };
 };

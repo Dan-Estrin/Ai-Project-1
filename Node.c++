@@ -1,6 +1,6 @@
 #include "Node.h++"
 
-Node::Node(std::string state, char action, unsigned short cost){
+Node::Node(string state, string action, unsigned short cost){
   this->parent = nullptr;
   this->c1 = nullptr;
   this->c2 = nullptr;
@@ -12,7 +12,7 @@ Node::Node(std::string state, char action, unsigned short cost){
   this->cost = cost;
 };
 
-Node Node::ChildNode(std::string state, char action){
+Node Node::ChildNode(string state, string action){
   Node tNode = Node(state, action);
   tNode.parent = this;
   if(tNode.parent->c1 == nullptr){

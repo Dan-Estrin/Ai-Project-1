@@ -15,13 +15,14 @@ namespace Queues{
   };
 
   class LIFO{
-    private:
+    public:
     Node* head;
     Node* tail;
+    unsigned int size;
 
     public:
     LIFO();
-    void Insert(Node& newTail);
+    void Insert(Node* newTail);
     void Pop();
     bool IsEmpty();
   };

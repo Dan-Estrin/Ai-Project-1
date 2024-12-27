@@ -7,6 +7,12 @@ Queues::FIFO::FIFO(){
   this->size = 0;
 }
 
+Queues::LIFO::LIFO(){
+  this->head = nullptr;
+  this->tail = nullptr;
+  this->size = 0;
+}
+
 void Queues::FIFO::Insert(Node* newTail){
   if (newTail == nullptr) return;
   if(this->head == nullptr){
@@ -21,7 +27,19 @@ void Queues::FIFO::Insert(Node* newTail){
   this->size++;
 }
 
-
+void Queues::LIFO::Insert(Node* newTail){
+  if (newTail == nullptr) return;
+  if(this->head == nullptr){
+    this->head = newTail;
+    this->tail = newTail;
+  }
+  else{
+    this->tail->qBack = newTail;
+    newTail->qFront = this->tail;
+    this->tail = newTail;
+  }
+  this->size++;
+}
 
 void Queues::FIFO::Pop(){
   this->head = this->head->qBack;
@@ -30,7 +48,19 @@ void Queues::FIFO::Pop(){
   this->size--;
 }
 
+void Queues::LIFO::Pop(){
+  this->tail = this->tail->qFront;
+  if(this->tail == nullptr) return;
+  this->tail->qBack = nullptr;
+  this->size--;
+}
+
 bool Queues::FIFO::IsEmpty(){
-  if(this->head == 0 && this->size == 0) return true;
+  if(this->head == nullptr || this->size == 0) return true;
+  else return false;
+}
+
+bool Queues::LIFO::IsEmpty(){
+  if(this->head == nullptr || this->size == 0) return true;
   else return false;
 }
