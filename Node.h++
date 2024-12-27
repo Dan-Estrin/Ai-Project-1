@@ -2,6 +2,7 @@
 #define NODE_H
 
 #include <string>
+using std::string;
 
 class Node{
   public:
@@ -19,12 +20,12 @@ class Node{
   Node* qBack;
 
   //node attributes
-  std::string state;
-  char action;
+  string state;
+  string action;
   unsigned short cost;
 
   public:
-  Node(std::string state, char action, unsigned short cost = 1);
-  Node ChildNode(std::string state, char action);
+  Node(string state, string action, unsigned short cost = 1);
+  Node ChildNode(string state, string action);
 };
 #endif
